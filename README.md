@@ -1,35 +1,32 @@
-# KilobotArena
-## Augmented Reality for Kilobots (ARK)
-### Installation
+# Augmented Reality for Kilobots Software (with built-in controller design and compilation).
 
-A GUI for running experiments using Kilobot Smart Arena with four tracking cameras
+This repository features a version of the Augmented Reality for Kilobots (ARK) software, which introduces two new functionalities not available in the [original version](https://github.com/DiODeProject/KilobotArena): 
+1. Formal and graphical design of swarm controllers. This is done using the [Nadzuro2](https://github.com/openswarm-eu/Nadzoru2) software.
+2. Built-in compilation of the swarm controller.
 
-Ubuntu is the preferred OS for ARK
+## Requirements
+To be able to run the simulator, you must have:
+- A recent version of Linux, MacOSX or Windows
+- For ARK, same requirments as the [original version](https://github.com/DiODeProject/KilobotArena).
+- ForNadzuro2, Python 3.6 (or newer), PyGObject, and Jinja2 must be installed.
 
-KilobotArena is a Qt program, and therefore uses the Qt build tools to generate the make file. There are two ways to do this - in both cases you need a recent version of Qt [v.5.6+](www.qt.io) installed - on Ubuntu the version in aptitude should do (`sudo apt-get install qtcreator` should install everything from Qt that you need).
+## Instalation 
 
-You also need a CUDA supporting version of OpenCV 3 - you'll need to compile this yourself - here's a [guide](https://gist.github.com/filitchp/5645d5eebfefe374218fa2cbf89189aa) that should work. 
-
-Now either use the QtCreator gui you installed in the previous step (click the hammer button to build - it will prompt you to choose), or run `qmake` in the ARK directory to generate the Makefile. There are lots of online guides to help if you have trouble [e.g.](http://doc.qt.io/qtcreator/creator-building-targets.html)
-
-QtCreator will run the Makefile for you - from the command line you'll have to do it yourself. If you get build errors you may need to change the path to OpenCV in the .pro file (the syntax is quite simple).
-
-You also need to install the calibration program to generate calibrated camera maps: [KilobotArenaCalibration](https://github.com/DiODeProject/KilobotArenaCalibration).
-
-### User permission
-In order to operate the Kilobot's OHC, the user needs to be part of the dialout group. Therefore, add the user to the group `dialout` with command
-
+First clone the git repository of Nadzuro2 into the home folder of your computer:
+```bash
+git clone https://github.com/openswarm-eu/Nadzoru2.git
 ```
-sudo usermod -a -G dialout <user-name>
-```
+Install ARK as described in the [original version](https://github.com/DiODeProject/KilobotArena).
 
-### Citation
+## Run  
 
-If you use or adapt ARK in order to generate experimental results, please cite the following paper in any resulting publications:
+-Run ARK as described in the [original version](https://github.com/DiODeProject/KilobotArena). 
 
-* Reina A., Cope A.J., Nikolaidis E., Marshall J.A.R., Sabo C. (2017) ARK: Augmented reality for Kilobots. *IEEE Robotics and Automation Letters* **2, 1755-1761**.
+-To design a swarm controller from ARK:
+- Press the **Design Controller** button from the **Controller** tab in the ARK UI. This will ask you to select a folder of where the controller files will be stored. 
+- Once you select a folder,  the Nadzuro2 software will open providing you with an external UI to graphically design the controller. 
+- Once you finish designing the controller, make sure it is saved into the folder selected earlier.
 
-### See Also
+-To compile the designed controller, press the **Compile Controller** button from the **Controller** tab in the ARK UI. A pop up message will let you know if the compilation was successfull or not. In case, of compilation errors, you will get these from within Qt Creator error logs.
 
-* ARK makes use of a redesigned overhead controller: [ARK_OHC](https://github.com/DiODeProject/ARK_OHC)
-* [Kilobot Wiki](http://diode.group.shef.ac.uk/kilobots/index.php/Kilobots)
+-To upload the compiled code, press the **Upload Controller** button from the **Controller** tab in the ARK UI. This will upload the controller binary to the robots present in the ARK arena.
