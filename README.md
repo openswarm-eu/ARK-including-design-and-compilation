@@ -33,3 +33,10 @@ If you use or adapt ARK in order to generate experimental results, please cite t
 
 * ARK makes use of a redesigned overhead controller: [ARK_OHC](https://github.com/DiODeProject/ARK_OHC)
 * [Kilobot Wiki](http://diode.group.shef.ac.uk/kilobots/index.php/Kilobots)
+
+
+# Acknowledgement
+
+Part of the source code in this repository is developed within the frame and for the purpose of the OpenSwarm project. This project has received funding from the European Unioan's Horizon Europe Framework Programme under Grant Agreement No. 101093046.
+
+![OpenSwarm - Funded by the European Union](logos/ack.png)
